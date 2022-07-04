@@ -10,36 +10,17 @@ env:
 
 
 jobs:
-  test:
+  build:
+
     runs-on: ubuntu-latest
 
     steps:
-    - name: test1
-      run: echo hoge
-      if: ( 'a' == 'a' )
-
-    - name: test2
-      run: echo hoge
-      if: ( 'a' == 'b' )
-
-    - name: test3
-      run: echo hoge
-      if: >
-        'a' == 'a'
-
-    - name: test4
-      run: echo hoge
-      if: >
-        'a' == 'b'
-
-    - name: test5
-      run: echo hoge
-      if: >
-        ${{ 'a' == 'a' }}
-
-    - name: test6
-      run: echo hoge
-      if: >
-        ${{ 'a' == 'b' }}
-          
-         
+    - name: Executing remote command
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        USERNAME: ${{ secrets.USERNAME }}
+        PORT: ${{ secrets.PORT }}
+        PASSWORD: ${{ secrets.PASSWORD }}  
+        script: |
+          sudo pwd
