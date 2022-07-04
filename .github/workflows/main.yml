@@ -23,4 +23,5 @@ jobs:
         PORT: ${{ secrets.PORT }}
         PASSWORD: ${{ secrets.PASSWORD }}  
         script: |
-          sudo pwd
+          sudo cd /var/www/
+          sudo ls -l
