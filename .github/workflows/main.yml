@@ -31,7 +31,7 @@ jobs:
         script: |
          cd /var/www && \
          sudo ls -l && \
-         if test -d "html"; then \
+         if ((test -d "html")) then \
          echo 0  \
          else  \
          echo 1  \
