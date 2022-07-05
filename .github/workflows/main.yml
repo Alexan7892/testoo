@@ -28,10 +28,11 @@ jobs:
         script: |
          cd /var/www && \
          sudo ls -l && \
-         test -d "html" && echo "::set-output name=test::yes" || echo "::set-output name=test:no"
+         echo "::set-output name=test::hello"
     
     - name: After checking 2
-      run: echo ${{steps.checkfolder.outputs.exist}}
+      run: |
+       echo ${{steps.checkfolder.outputs.exist}}
       
     - name: Create output 
       id: step1
