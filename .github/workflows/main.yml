@@ -28,6 +28,10 @@ jobs:
          sudo ls -l && \
          test -d "html" && echo "::set-output name=exist::true" || echo "::set-output name=exist:false"
     
+    - name: After checking 2
+      run: echo ${{steps.checkfolder.outputs.exist}}
+      
+    
     - name: After checking
       run: echo hoge
       if: ( steps.checkfolder.outputs.exist == 'true' )
