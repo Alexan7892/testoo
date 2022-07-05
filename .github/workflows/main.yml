@@ -5,7 +5,7 @@ on:
     branches:
       - main
 env:
-  TEST : "test"
+  TEST : "Alex"
 
 
 
@@ -25,10 +25,11 @@ jobs:
         USERNAME: ${{ secrets.USERNAME }}
         PORT: ${{ secrets.PORT }}
         PASSWORD: ${{ secrets.PASSWORD }}  
+        envs: TEST
         script: |
          cd /var/www && \
          sudo ls -l && \
-         echo "::set-output name=test::hello"
+         echo "I am $Test"
     
     - name: After checking 2
       run: |
