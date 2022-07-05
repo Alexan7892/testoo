@@ -5,7 +5,7 @@ on:
     branches:
       - main
 env:
-  TEST : "Alex"
+  TEST1 : "Alex1"
 
 
 
@@ -20,6 +20,8 @@ jobs:
     - name: Executing remote command
       id: checkfolder
       uses: appleboy/ssh-action@master
+      env:
+       TEST: ${{ env.TEST1 }}  
       with:
         host: ${{ secrets.HOST }}
         USERNAME: ${{ secrets.USERNAME }}
