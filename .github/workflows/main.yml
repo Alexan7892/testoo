@@ -31,10 +31,10 @@ jobs:
         script: |
          cd /var/www && \
          sudo ls -l && \
-         if test -d "html"; then && \
-         echo 0 && \
-         else && \
-         echo 1 && \
+         if test -d "html"; then \
+         echo 0  \
+         else  \
+         echo 1  \
          fi    
     - name: After checking 2
       run: |
