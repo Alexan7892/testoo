@@ -31,7 +31,8 @@ jobs:
         script: |
          cd /var/www && \
          sudo ls -l && \
-         echo "I am $Test"
+         echo "I am $Test" && \
+         exit 1
     
     - name: After checking 2
       run: |
