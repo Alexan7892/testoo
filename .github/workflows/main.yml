@@ -16,6 +16,7 @@ jobs:
 
     steps:
     - name: Executing remote command
+      id: checkfolder
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
@@ -25,4 +26,9 @@ jobs:
         script: |
          cd /var/www && \
          sudo ls -l && \
-         test -d "html" && echo "true" || echo "false"
+         test -d "html" && echo "::set-output name=exist::true" || echo "::set-output name=exist:false"
+    
+    - name: After checking
+      run: echo hoge
+      if: ( steps.checkfolder.outputs.exist == 'true' )
+      
