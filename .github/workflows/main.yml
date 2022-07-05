@@ -13,6 +13,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    outputs:
+      exist: ${{ steps.checkfolder.outputs.test }}     
 
     steps:
     - name: Executing remote command
@@ -26,7 +28,7 @@ jobs:
         script: |
          cd /var/www && \
          sudo ls -l && \
-         test -d "html" && echo "::set-output name=exist::true" || echo "::set-output name=exist:false"
+         test -d "html" && echo "::set-output name=test::true" || echo "::set-output name=test:false"
     
     - name: After checking 2
       run: echo ${{steps.checkfolder.outputs.exist}}
