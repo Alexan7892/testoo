@@ -33,8 +33,12 @@ jobs:
     - name: After checking 2
       run: echo ${{steps.checkfolder.outputs.exist}}
       
+    - name: Create output 
+      id: step1
+      run: echo "::set-output name=test::hello"
+      
     
-    - name: After checking
+    - name: Create output 2
       run: echo hoge
-      if: ( steps.checkfolder.outputs.exist == 'true' )
+      if: (  ${{ steps.step1.outputs.test }} == 'hello' )
       
