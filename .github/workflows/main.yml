@@ -28,7 +28,7 @@ jobs:
         script: |
          cd /var/www && \
          sudo ls -l && \
-         test -d "html" && echo "::set-output name=test::true" || echo "::set-output name=test:false"
+         test -d "html" && echo "::set-output name=test::yes" || echo "::set-output name=test:no"
     
     - name: After checking 2
       run: echo ${{steps.checkfolder.outputs.exist}}
