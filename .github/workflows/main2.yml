@@ -22,10 +22,10 @@ jobs:
     - name: Copy repository contents via scp
       uses: appleboy/scp-action@master
       env:
-        HOST: ${{ secrets.HOST_FF_RU }}
-        USERNAME: ${{ secrets.USERNAME_FF_RU }}
-        PORT: ${{ secrets.PORT_FF_RU }}
-        PASSWORD: ${{ secrets.PASSWORD_FF_RU }}
+        HOST: ${{ secrets.HOST }}
+        USERNAME: ${{ secrets.USERNAME }}
+        PORT: ${{ secrets.PORT }}
+        PASSWORD: ${{ secrets.PASSWORD }}
       with:
         source: "."
         target: ${{ env.PATH_TARGET }}
@@ -34,10 +34,10 @@ jobs:
     - name: Executing remote command
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.HOST_FF_RU }}
-        USERNAME: ${{ secrets.USERNAME_FF_RU }}
-        PORT: ${{ secrets.PORT_FF_RU }}
-        PASSWORD: ${{ secrets.PASSWORD_FF_RU }}   
+        host: ${{ secrets.HOST }}
+        USERNAME: ${{ secrets.USERNAME }}
+        PORT: ${{ secrets.PORT }}
+        PASSWORD: ${{ secrets.PASSWORD }}   
         script: |
           sudo mv ${{ env.MAIN_DIRECTORY }} ${{ env.MAIN_DIRECTORY }}_old && \
           sudo mv ${{ env.PATH_TARGET }} ${{ env.MAIN_DIRECTORY }} && \                        
